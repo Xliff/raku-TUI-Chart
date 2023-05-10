@@ -102,6 +102,8 @@ class TUI::Chart does JSON::Class {
   }
 }
 
+constant TUI-Chart is export = TUI::Chart;
+
 sub MAIN is export {
   TUI::Chart.from-json( q:to/JSON/ ).gist.say;
     {

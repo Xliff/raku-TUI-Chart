@@ -49,6 +49,8 @@ class TUI::Chart::Legend does JSON::Class {
   has Theme $.theme        is rw is built;
 }
 
+constant TUI-Legend is export = TUI::Chart::Legend;
+
 sub MAIN is export {
   TUI::Chart::Legend.from-json( q:to/JSON/ ).gist.say;
     {
