@@ -1,19 +1,19 @@
 use v6;
 
-use JSON::Class;
+use TUI::Chart::Basics;
 
 role TUI::Chart::Legend::Circle {
   has Bool $.visible;
 }
 
-class TUI::Chart::Legend::Item does JSON::Class {
+class TUI::Chart::Legend::Item is TUI::Chart::Object {
   has Num $.width    is rw is built;
   has Str $.overflow is rw is built; #= ellipsis;
 }
 
 constant Item = TUI::Chart::Legend::Item;
 
-class TUI::Chart::Legend::Theme::Label does JSON::Class {
+class TUI::Chart::Legend::Theme::Label is TUI::Chart::Object {
   has Num $.fontSize   is rw is built;
   has Str $.fontFamily is rw is built;
   has Int $.fontWeight is rw is built;  #= Num | Str
@@ -33,14 +33,14 @@ class TUI::Chart::Legend::Theme::Legend
 constant LTL = TUI::Chart::Legend::Theme::Legend;
 
 class TUI::Chart::Legend::Theme
-  does JSON::Class
+  is TUI::Chart::Object
 {
   has LTL $.legend is rw is built;
 }
 
 constant Theme = TUI::Chart::Legend::Theme;
 
-class TUI::Chart::Legend does JSON::Class {
+class TUI::Chart::Legend is TUI::Chart::Object {
   has Str   $.align        is rw is built; #= top | bottom | right | left
   has Bool  $.showCheckbox is rw is built;
   has Bool  $.visible      is rw is built;

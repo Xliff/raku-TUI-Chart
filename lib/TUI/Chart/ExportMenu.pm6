@@ -1,8 +1,8 @@
 use v6;
 
-use JSON::Class;
+use TUI::Chart::Basics;
 
-class TUI::Chart::ExportMenu is JSON::Class {
+class TUI::Chart::ExportMenu is TUI::Chart::Object {
   has Bool $.visible  is rw is built;
   has Str  $.filename is rw is built;
 }

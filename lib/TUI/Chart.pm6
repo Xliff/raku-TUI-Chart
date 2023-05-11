@@ -1,10 +1,10 @@
 use v6;
 
-use JSON::Class;
+use TUI::Chart::Basics;
 
 use TUI::Chart::Subs;
 
-class TUI::Chart::TitleOpts does JSON::Class {
+class TUI::Chart::TitleOpts is TUI::Chart::Object {
   has Str $.text    is rw is built;
   has Num $.offsetX is rw is built;
   has Num $.offsetY is rw is built;
@@ -50,7 +50,7 @@ class TUI::Chart::TitleOpts does JSON::Class {
 
 constant TitleOpts = TUI::Chart::TitleOpts;
 
-class TUI::Chart::Animation does JSON::Class {
+class TUI::Chart::Animation is TUI::Chart::Object {
   has $.duration is rw is built;
 
   method new ($opt) {
@@ -60,7 +60,7 @@ class TUI::Chart::Animation does JSON::Class {
 
 constant Animation = TUI::Chart::Animation;
 
-class TUI::Chart does JSON::Class {
+class TUI::Chart is TUI::Chart::Object {
   has TitleOpts $.title     is rw;
   has Animation $.animation is rw;
   has           $.width     is rw;    #= Num | 'auto'
