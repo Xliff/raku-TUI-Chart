@@ -9,8 +9,7 @@ class TUI::Chart::ExportMenu is TUI::Chart::Object {
 
 constant TUI-ExportMenu is export = TUI::Chart::ExportMenu;
 
-
-sub MAIN is export {
+sub ExportMenu-MAIN is export {
   TUI::Chart::ExportMenu.from-json( q:to/JSON/ ).gist.say;
      {
        "visible": false
