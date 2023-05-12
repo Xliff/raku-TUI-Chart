@@ -51,7 +51,7 @@ class TUI::Chart::Legend is TUI::Chart::Object {
 
 constant TUI-Legend is export = TUI::Chart::Legend;
 
-sub MAIN is export {
+sub Legend-MAIN is export {
   TUI::Chart::Legend.from-json( q:to/JSON/ ).gist.say;
     {
       "item": {
