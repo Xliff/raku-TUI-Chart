@@ -51,31 +51,31 @@ class TUI::Chart::ToolTip::Theme {
   has Tooltip $.tooltip is rw is built;
 }
 
-constant Theme = TUI::Chart::ToolTip::Theme;
+constant TooltipTheme = TUI::Chart::ToolTip::Theme;
 
 class TUI::Chart::ToolTip::Template is TUI::Chart::Object {
-  has Model   $.model           is rw is built;
-  has Default $.defaultTemplate is rw is built;
-  has Theme   $.theme           is rw is built is required;
+  has Model        $.model           is rw is built;
+  has Default      $.defaultTemplate is rw is built;
+  has TooltipTheme $.theme           is rw is built is required;
 }
 
 constant Template = TUI::Chart::ToolTip::Template;
 
 class TUI::Chart::ToolTip is TUI::Chart::Object {
-  has Num      $.offsetX    is rw is built;
-  has Num      $.offsetY    is rw is built;
-  has          &.formattter is rw is built;
-  has Template $.template   is rw is built;
+  has Num          $.offsetX           is rw is built;
+  has Num          $.offsetY           is rw is built;
+  has              $.formattter-string is rw is built;
+  has Template     $.template          is rw is built;
 
   #| When 'false' or 'False', $!transition becomes an empty string!
-  has Str      $.transition is rw is built; #= Bool | Str
+  has Str          $.transition is rw is built; #= Bool | Str
 
-  has Theme    $.theme      is rw is built;
+  has TooltipTheme $.theme      is rw is built;
 }
 
 constant TUI-ToolTip is export = TUI::Chart::ToolTip;
 
-sub MAIN is export {
+sub Tooltip-MAIN is export {
   TUI::Chart::ToolTip.from-json( q:to/JSON/ ).gist.say;
     {
       "theme": {
