@@ -1,6 +1,6 @@
 use v6.c;
 
-our class X::TUI::InvalidValue is Exception {
+our class X::Toast::UI::InvalidValue is Exception {
   has $.bad-value is built;
   has $.attribute is built;
 
@@ -21,7 +21,7 @@ multi sub getSetLimitedOptions ($self, Attribute() $attr) is export is rw {
       if v eq $attr.WHY.trailing.split(/ \s+ '|' \s+ /).any {
         $attr.set_value($self, v);
       } else {
-        X::TUI::InvalidValue.new( bad-value => v, attribute => $attr ).throw;
+        X::Toast::UI::InvalidValue.new( bad-value => v, attribute => $attr ).throw;
       }
     }
 }

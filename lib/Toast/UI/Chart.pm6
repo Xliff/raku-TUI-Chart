@@ -1,10 +1,10 @@
 use v6;
 
-use TUI::Chart::Basics;
+use Toast::UI::Chart::Basics;
 
-use TUI::Chart::Subs;
+use Toast::UI::Chart::Subs;
 
-class TUI::Chart::TitleOpts is TUI::Chart::Object {
+class Toast::UI::Chart::TitleOpts is Toast::UI::Object {
   has Str $.text    is rw is built;
   has Num $.offsetX is rw is built;
   has Num $.offsetY is rw is built;
@@ -48,9 +48,9 @@ class TUI::Chart::TitleOpts is TUI::Chart::Object {
 
 }
 
-constant TitleOpts = TUI::Chart::TitleOpts;
+constant TitleOpts = Toast::UI::Chart::TitleOpts;
 
-class TUI::Chart::Animation is TUI::Chart::Object {
+class Toast::UI::Chart::Animation is Toast::UI::Object {
   has $.duration is rw is built;
 
   method new ($opt) {
@@ -58,9 +58,9 @@ class TUI::Chart::Animation is TUI::Chart::Object {
   }
 }
 
-constant Animation = TUI::Chart::Animation;
+constant Animation = Toast::UI::Chart::Animation;
 
-class TUI::Chart is TUI::Chart::Object {
+class Toast::UI::Chart is Toast::UI::Object {
   has TitleOpts $.title     is rw;
   has Animation $.animation is rw;
   has           $.width     is rw;    #= Num | 'auto'
@@ -102,10 +102,10 @@ class TUI::Chart is TUI::Chart::Object {
   }
 }
 
-constant TUI-Chart is export = TUI::Chart;
+constant Toast::UI-Chart is export = Toast::UI::Chart;
 
 sub MAIN is export {
-  TUI::Chart.from-json( q:to/JSON/ ).gist.say;
+  Toast::UI::Chart.from-json( q:to/JSON/ ).gist.say;
     {
       "title": {
         "text": "Chart Title",
@@ -116,7 +116,7 @@ sub MAIN is export {
     }
     JSON
 
-  TUI::Chart.from-json( q:to/JSON/ ).gist.say;
+  Toast::UI::Chart.from-json( q:to/JSON/ ).gist.say;
     {
       "title": "My Title"
     }

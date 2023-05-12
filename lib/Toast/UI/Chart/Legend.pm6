@@ -1,46 +1,46 @@
 use v6;
 
-use TUI::Chart::Basics;
+use Toast::UI::Chart::Basics;
 
-role TUI::Chart::Legend::Circle {
+role Toast::UI::Chart::Legend::Circle {
   has Bool $.visible;
 }
 
-class TUI::Chart::Legend::Item is TUI::Chart::Object {
+class Toast::UI::Chart::Legend::Item is Toast::UI::Object {
   has Num $.width    is rw is built;
   has Str $.overflow is rw is built; #= ellipsis;
 }
 
-constant Item = TUI::Chart::Legend::Item;
+constant Item = Toast::UI::Chart::Legend::Item;
 
-class TUI::Chart::Legend::Theme::Label is TUI::Chart::Object {
+class Toast::UI::Chart::Legend::Theme::Label is Toast::UI::Object {
   has Num $.fontSize   is rw is built;
   has Str $.fontFamily is rw is built;
   has Int $.fontWeight is rw is built;  #= Num | Str
   has Str $.color      is rw is built;
 }
 
-constant Label = TUI::Chart::Legend::Theme::Label;
+constant Label = Toast::UI::Chart::Legend::Theme::Label;
 
-role TUI::Chart::Legend::Role::Theme {
+role Toast::UI::Chart::Legend::Role::Theme {
   has Label $.label is rw is built;
 }
 
-class TUI::Chart::Legend::Theme::Legend
-  does TUI::Chart::Legend::Role::Theme
+class Toast::UI::Chart::Legend::Theme::Legend
+  does Toast::UI::Chart::Legend::Role::Theme
 { }
 
-constant LTL = TUI::Chart::Legend::Theme::Legend;
+constant LTL = Toast::UI::Chart::Legend::Theme::Legend;
 
-class TUI::Chart::Legend::Theme
-  is TUI::Chart::Object
+class Toast::UI::Chart::Legend::Theme
+  is Toast::UI::Object
 {
   has LTL $.legend is rw is built;
 }
 
-constant Theme = TUI::Chart::Legend::Theme;
+constant Theme = Toast::UI::Chart::Legend::Theme;
 
-class TUI::Chart::Legend is TUI::Chart::Object {
+class Toast::UI::Chart::Legend is Toast::UI::Object {
   has Str   $.align        is rw is built; #= top | bottom | right | left
   has Bool  $.showCheckbox is rw is built;
   has Bool  $.visible      is rw is built;
@@ -49,10 +49,10 @@ class TUI::Chart::Legend is TUI::Chart::Object {
   has Theme $.theme        is rw is built;
 }
 
-constant TUI-Legend is export = TUI::Chart::Legend;
+constant TUI-Legend is export = Toast::UI::Chart::Legend;
 
 sub Legend-MAIN is export {
-  TUI::Chart::Legend.from-json( q:to/JSON/ ).gist.say;
+  Toast::UI::Chart::Legend.from-json( q:to/JSON/ ).gist.say;
     {
       "item": {
         "width": 70,
@@ -61,7 +61,7 @@ sub Legend-MAIN is export {
     }
     JSON
 
-  TUI::Chart::Legend.from-json( q:to/JSON/ ).gist.say;
+  Toast::UI::Chart::Legend.from-json( q:to/JSON/ ).gist.say;
     {
       "theme": {
         "legend": {
